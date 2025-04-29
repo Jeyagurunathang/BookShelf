@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.okhttp)
 
     //GSON
-    implementation(libs.gson)
+    implementation(libs.retrofit2.converter.gson)
 
     // Kotlin serialization
     implementation(libs.kotlinx.serialization.json)
