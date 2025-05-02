@@ -1,5 +1,5 @@
 package com.example.bookshelf.domain.models.booksListModel
 
-data class BooksListDto(
+data class BooksListModel(
     val items: List<Item>
 )

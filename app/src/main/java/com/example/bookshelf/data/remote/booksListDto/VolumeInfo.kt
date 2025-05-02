@@ -1,5 +1,7 @@
 package com.example.bookshelf.data.remote.booksListDto
 
+import com.example.bookshelf.domain.models.booksListModel.VolumeInfo
+
 data class VolumeInfo(
     val allowAnonLogging: Boolean,
     val authors: List<String>,
@@ -24,3 +26,12 @@ data class VolumeInfo(
     val subtitle: String,
     val title: String
 )
+
+fun VolumeInfo.toBookModelListVolumeInfo() : VolumeInfo {
+    return VolumeInfo(
+        description = description,
+        imageLinks = imageLinks,
+        subtitle = subtitle,
+        title = title
+    )
+}
