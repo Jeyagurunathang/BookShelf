@@ -20,7 +20,7 @@ val lato = FontFamily(
 val Typography = Typography(
     titleMedium = TextStyle(
         fontFamily = gabarito,
-        fontSize = 48.sp,
+        fontSize = 32.sp,
         fontWeight = FontWeight.Normal
     ),
     bodyLarge = TextStyle(
@@ -36,6 +36,11 @@ val Typography = Typography(
     bodySmall = TextStyle(
         fontFamily = lato,
         fontSize = 24.sp,
+        fontWeight = FontWeight.Normal
+    ),
+    labelLarge = TextStyle(
+        fontFamily = lato,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Normal
     )
     /* Other default text styles to override

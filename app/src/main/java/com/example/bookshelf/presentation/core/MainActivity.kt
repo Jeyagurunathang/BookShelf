@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bookshelf.domain.useCase.getBooks.GetBooksUseCase
 import com.example.bookshelf.presentation.core.ui.theme.BookShelfTheme
+import com.example.bookshelf.presentation.getBooks.ListScreenHeader
 import com.example.bookshelf.presentation.viewModel.GetBooksViewModel
 
 class MainActivity : ComponentActivity() {
@@ -23,29 +24,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val viewModel: GetBooksViewModel = viewModel(factory = GetBooksViewModel.Factory)
-            BookShelfTheme {
+            BookShelfTheme (dynamicColor = false) {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                        viewModel = viewModel
-                    )
+                    ListScreenHeader(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier, viewModel: GetBooksViewModel) {
-    val uiState = viewModel.uiState.collectAsState()
-
-    if (uiState.value.isLoading) {
-        Text(text = "Loading")
-    } else {
-        Text(
-            text = uiState.toString(),
-            modifier = modifier
-        )
     }
 }
