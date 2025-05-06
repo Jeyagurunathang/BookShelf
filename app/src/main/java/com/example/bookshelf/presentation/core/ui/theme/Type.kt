@@ -34,8 +34,8 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal
     ),
     bodySmall = TextStyle(
-        fontFamily = lato,
-        fontSize = 24.sp,
+        fontFamily = gabarito,
+        fontSize = 18.sp,
         fontWeight = FontWeight.Normal
     ),
     labelLarge = TextStyle(

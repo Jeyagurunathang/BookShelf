@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="padding_normal">60.dp</dimen>
+    <dimen name="padding_normal">30.dp</dimen>
     <dimen name="padding_huge">203.dp</dimen>
     <dimen name="padding_medium">22.dp</dimen>
     <dimen name="padding_small">25.dp</dimen>
