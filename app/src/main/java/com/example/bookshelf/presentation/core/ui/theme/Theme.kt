@@ -11,15 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primaryContainer = black,
+    onPrimary = white,
+    secondaryContainer = black80,
+    onSecondary = grey80
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primaryContainer = white,
+    onPrimary = black,
+    secondaryContainer = white70,
+    onSecondary = grey
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -52,6 +54,7 @@ fun BookShelfTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
+        content = content,
+        shapes = shapes
     )
 }
