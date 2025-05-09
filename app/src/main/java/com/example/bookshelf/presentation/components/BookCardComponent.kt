@@ -17,7 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.bookshelf.R
@@ -51,7 +53,7 @@ fun BookCardComponent(
     ) {
         val imageSrc = book.volumeInfo.imageLinks.thumbnail.replace(oldValue = "http://", newValue = "https://")
         Column (
-            modifier = modifier.padding(10.dp)
+            modifier = modifier.padding(15.dp)
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(context = LocalContext.current)
@@ -68,7 +70,10 @@ fun BookCardComponent(
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(
                     top = 15.dp
-                )
+                ),
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1,
+                color = MaterialTheme.colorScheme.onSecondary
             )
         }
     }

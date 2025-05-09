@@ -20,7 +20,7 @@ val lato = FontFamily(
 val Typography = Typography(
     titleMedium = TextStyle(
         fontFamily = gabarito,
-        fontSize = 32.sp,
+        fontSize = 28.sp,
         fontWeight = FontWeight.Normal
     ),
     bodyLarge = TextStyle(
