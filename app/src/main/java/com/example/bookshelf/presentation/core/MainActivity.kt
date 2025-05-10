@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
                     val getBooksUiState = getBooksViewModel.uiState.collectAsState()
 
                     GetBooksListScreen(
+                        getBooksViewModel = getBooksViewModel,
                         getBooksUiState = getBooksUiState.value,
                         modifier = Modifier.padding(innerPadding)
                     )

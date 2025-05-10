@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -30,7 +34,7 @@ import com.example.bookshelf.presentation.core.ui.theme.BookShelfTheme
 @Composable
 fun SearchBarComponent(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
+    onClick: (String) -> Unit = {},
     onCancelClicked: () -> Unit = {}
 ) {
     var enteredBookCategory by remember { mutableStateOf("") }
@@ -49,12 +53,22 @@ fun SearchBarComponent(
                 )
             },
             onValueChange = { enteredBookCategory = it },
+            leadingIcon = {
+                IconButton(
+                    onClick = onCancelClicked
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.KeyboardArrowLeft,
+                        contentDescription = "Back"
+                    )
+                }
+            },
             trailingIcon = {
                 if (enteredBookCategory.isNotEmpty()) {
                     IconDisplay(
                         icon = R.drawable.search,
                         modifier = Modifier.size(16.dp),
-                        onClick = onClick
+                        onClick = { onClick(enteredBookCategory) }
                     )
                 } else {
                     IconDisplay(

@@ -28,7 +28,7 @@ class GetBooksViewModel(
         getBooks(topic = Constants.DEFAULT_TOPIC)
     }
 
-    private fun getBooks(topic: String) {
+    fun getBooks(topic: String) {
         getBooksUseCase.execute(topic).onEach {
             when(it) {
                 is Resource.Success -> {

@@ -13,9 +13,11 @@ import androidx.compose.ui.Modifier
 import com.example.bookshelf.presentation.DummyData
 import com.example.bookshelf.presentation.components.LoadingScreen
 import com.example.bookshelf.presentation.uiState.BooksUiState
+import com.example.bookshelf.presentation.viewModel.GetBooksViewModel
 
 @Composable
 fun GetBooksListScreen(
+    getBooksViewModel: GetBooksViewModel,
     getBooksUiState: BooksUiState,
     modifier: Modifier = Modifier
 ) {
@@ -25,7 +27,9 @@ fun GetBooksListScreen(
             .background(color = MaterialTheme.colorScheme.primaryContainer),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ListScreenHeader()
+        ListScreenHeader(
+            getBooksViewModel = getBooksViewModel
+        )
 
         HorizontalDivider()
 
