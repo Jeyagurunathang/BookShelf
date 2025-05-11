@@ -35,7 +35,6 @@ fun ListScreenHeader(
     getBooksViewModel: GetBooksViewModel,
     modifier: Modifier = Modifier
 ) {
-
     var searchIconClicked by remember { mutableStateOf(false) }
 
     val appTitle = stringResource(R.string.app_name).split(" ")
@@ -54,11 +53,10 @@ fun ListScreenHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (searchIconClicked) {
-            LaunchedEffect(true) {
-                delay(100)
+            LaunchedEffect(key1 = true) {
+                delay(100L)
                 focusRequester.requestFocus()
             }
-
             SearchBarComponent(
                 modifier = Modifier.focusRequester(focusRequester),
                 onClick = { topic ->

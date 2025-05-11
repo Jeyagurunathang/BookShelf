@@ -2,7 +2,6 @@ package com.example.bookshelf.presentation.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -23,7 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -38,6 +37,9 @@ fun SearchBarComponent(
     onCancelClicked: () -> Unit = {}
 ) {
     var enteredBookCategory by remember { mutableStateOf("") }
+
+    val focusManager = LocalFocusManager.current
+
     Row (
         modifier = Modifier
             .fillMaxWidth(),
@@ -68,7 +70,10 @@ fun SearchBarComponent(
                     IconDisplay(
                         icon = R.drawable.search,
                         modifier = Modifier.size(16.dp),
-                        onClick = { onClick(enteredBookCategory) }
+                        onClick = {
+                            onClick(enteredBookCategory)
+                            focusManager.clearFocus()
+                        }
                     )
                 } else {
                     IconDisplay(
@@ -94,7 +99,10 @@ fun SearchBarComponent(
                 imeAction = ImeAction.Go
             ),
             keyboardActions = KeyboardActions(
-                onGo = {  }
+                onGo = {
+                    onClick(enteredBookCategory)
+                    focusManager.clearFocus()
+                }
             )
         )
     }

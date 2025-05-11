@@ -1,8 +1,7 @@
 package com.example.bookshelf.presentation.components
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -20,12 +19,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -52,11 +49,12 @@ fun BookCardComponent(
         )
     )
 ) {
-    val imageSrc = book.volumeInfo.imageLinks.thumbnail.replace(oldValue = "http://", newValue = "https://")
+    val imageSrc =
+        book.volumeInfo.imageLinks?.thumbnail?.replace(oldValue = "http://", newValue = "https://")
     var bottomModalEnabled by remember { mutableStateOf(false) }
     val haptics = LocalHapticFeedback.current
 
-    Card (
+    Card(
         modifier = modifier
             .wrapContentSize()
             .combinedClickable(
@@ -71,17 +69,17 @@ fun BookCardComponent(
             containerColor = MaterialTheme.colorScheme.secondaryContainer
         )
     ) {
-        Column (
+        Column(
             modifier = modifier.padding(15.dp)
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(context = LocalContext.current)
-                    .data(imageSrc)
+                    .data(imageSrc ?: R.drawable.image_not_found)
                     .crossfade(true)
                     .build(),
                 contentDescription = "Book Image",
                 modifier = Modifier.size(150.dp),
-                contentScale = ContentScale.FillWidth
+                contentScale = ContentScale.Fit
             )
 
             Text(
@@ -102,6 +100,7 @@ fun BookCardComponent(
             onDismissRequest = { bottomModalEnabled = !bottomModalEnabled },
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ) {
+            Log.d("book", book.toString())
             BottomModalComponent(
                 bookTitle = book.volumeInfo.title,
                 bookDescription = book.volumeInfo.description

@@ -29,7 +29,7 @@ import com.example.bookshelf.presentation.core.ui.theme.BookShelfTheme
 @Composable
 fun BottomModalComponent(
     modifier: Modifier = Modifier,
-    bookDescription: String,
+    bookDescription: String? = null,
     bookTitle: String
 ) {
     Column(
@@ -46,7 +46,7 @@ fun BottomModalComponent(
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_tiny)))
 
         Text(
-            text = bookDescription,
+            text = bookDescription ?: "Sorry, we don't know that much about this book",
             color = MaterialTheme.colorScheme.onPrimary,
             style = MaterialTheme.typography.labelMedium,
             maxLines = 7,
