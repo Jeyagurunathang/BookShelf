@@ -21,12 +21,10 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.example.bookshelf.R
 import com.example.bookshelf.presentation.components.IconDisplay
 import com.example.bookshelf.presentation.components.SearchBarComponent
-import com.example.bookshelf.presentation.core.ui.theme.BookShelfTheme
 import com.example.bookshelf.presentation.viewModel.GetBooksViewModel
 import kotlinx.coroutines.delay
 
@@ -41,6 +39,8 @@ fun ListScreenHeader(
 
     val focusRequester =  remember { FocusRequester() }
 
+//    val scope = rememberCoroutineScope()
+
     Row (
         modifier = modifier
             .fillMaxWidth()
@@ -53,7 +53,7 @@ fun ListScreenHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (searchIconClicked) {
-            LaunchedEffect(key1 = true) {
+            LaunchedEffect(Unit) {
                 delay(100L)
                 focusRequester.requestFocus()
             }
@@ -83,6 +83,10 @@ fun ListScreenHeader(
                 modifier = Modifier.size(24.dp),
                 onClick = {
                     searchIconClicked = !searchIconClicked
+                    /*scope.launch {
+                        delay(100L)
+                        focusRequester.requestFocus()
+                    }*/
                 }
             )
         }
