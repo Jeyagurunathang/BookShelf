@@ -1,4 +1,4 @@
-package com.example.bookshelf.presentation.components
+package com.example.bookshelf.presentation.components.listScreen
 
 import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi

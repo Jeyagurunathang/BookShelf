@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import com.example.bookshelf.R
 import com.example.bookshelf.domain.models.booksListModel.Item
-import com.example.bookshelf.presentation.components.BookCardComponent
+import com.example.bookshelf.presentation.components.listScreen.BookCardComponent
 
 @Composable
 fun ListScreenBody(

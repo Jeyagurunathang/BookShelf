@@ -1,4 +1,4 @@
-package com.example.bookshelf.presentation.components
+package com.example.bookshelf.presentation.components.listScreen
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth

@@ -23,8 +23,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.bookshelf.R
-import com.example.bookshelf.presentation.components.IconDisplay
-import com.example.bookshelf.presentation.components.SearchBarComponent
+import com.example.bookshelf.presentation.components.listScreen.IconDisplay
+import com.example.bookshelf.presentation.components.listScreen.SearchBarComponent
 import com.example.bookshelf.presentation.viewModel.GetBooksViewModel
 import kotlinx.coroutines.delay
 
