@@ -2,9 +2,10 @@
 <resources>
     <dimen name="padding_normal">30.dp</dimen>
     <dimen name="padding_huge">203.dp</dimen>
-    <dimen name="padding_medium">22.dp</dimen>
-    <dimen name="padding_small">25.dp</dimen>
+    <dimen name="padding_medium">25.dp</dimen>
+    <dimen name="padding_small">22.dp</dimen>
     <dimen name="padding_tiny">20.dp</dimen>
+    <dimen name="padding_very_small">10.dp</dimen>
 
     <dimen name="padding_detail_huge">165.dp</dimen>
     <dimen name="padding_detail_normal">96.dp</dimen>
@@ -12,8 +13,8 @@
     <dimen name="padding_detail_tiny">38.dp</dimen>
 
     <dimen name="horizontal_padding_tiny">10.dp</dimen>
-    <dimen name="horizontal_padding_small">50.dp</dimen>
-    <dimen name="horizontal_padding_medium">32.dp</dimen>
+    <dimen name="horizontal_padding_small">32.dp</dimen>
+    <dimen name="horizontal_padding_medium">40.dp</dimen>
     <dimen name="horizontal_padding_large">70.dp</dimen>
 
     <dimen name="round_corner_size">12.dp</dimen>

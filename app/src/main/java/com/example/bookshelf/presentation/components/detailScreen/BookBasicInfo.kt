@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,7 +31,7 @@ fun BookBasicInfo(
     bookAuthor: String = "Dawn Griffiths"
 ) {
     Column (
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -42,19 +44,19 @@ fun BookBasicInfo(
                     .crossfade(true)
                     .build(),
                 contentDescription = bookTitle,
-                modifier = Modifier.size(250.dp),
+                modifier = Modifier.width(175.dp).height(250.dp),
                 contentScale = ContentScale.Crop
             )
         }
 
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_tiny)))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_detail_tiny)))
 
         Text(
             text = bookTitle,
             style = MaterialTheme.typography.bodyMedium
         )
 
-        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_tiny)))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_very_small)))
 
         Text(
             text = "by $bookAuthor",

@@ -5,4 +5,6 @@
 
     <string name="back_arrow">Back Arrow</string>
     <string name="share_icon">Share</string>
+
+    <string name="book_meta_data">About pages count and date of publication</string>
 </resources>

@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bookshelf.presentation.components.detailScreen.BookBasicInfo
 import com.example.bookshelf.presentation.core.ui.theme.BookShelfTheme
+import com.example.bookshelf.presentation.getBookById.DetailScreen
 import com.example.bookshelf.presentation.getBookById.DetailScreenHeader
 import com.example.bookshelf.presentation.getBooks.GetBooksListScreen
 import com.example.bookshelf.presentation.viewModel.GetBooksViewModel
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
 
 //                    DetailScreenHeader(modifier = Modifier.padding(innerPadding))
 
-                    BookBasicInfo(modifier = Modifier.padding(innerPadding))
+                    DetailScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
