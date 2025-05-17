@@ -3,10 +3,8 @@ package com.example.bookshelf.presentation.components.detailScreen
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -28,7 +27,7 @@ fun BookBasicInfo(
     modifier: Modifier = Modifier,
     bookImage: String? = DummyData.sampleBookImage,
     bookTitle: String = "Head First Android Development",
-    bookAuthor: String = "Dawn Griffiths"
+    bookAuthor: List<String>? = null
 ) {
     Column (
         modifier = modifier.fillMaxWidth(),
@@ -44,7 +43,9 @@ fun BookBasicInfo(
                     .crossfade(true)
                     .build(),
                 contentDescription = bookTitle,
-                modifier = Modifier.width(175.dp).height(250.dp),
+                modifier = Modifier
+                    .width(175.dp)
+                    .height(250.dp),
                 contentScale = ContentScale.Crop
             )
         }
@@ -53,15 +54,19 @@ fun BookBasicInfo(
 
         Text(
             text = bookTitle,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            textAlign = TextAlign.Center
         )
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_very_small)))
 
-        Text(
-            text = "by $bookAuthor",
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.onSecondary
-        )
+        bookAuthor?.let {
+            Text(
+                text = "by ${bookAuthor.joinToString()}",
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSecondary,
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }

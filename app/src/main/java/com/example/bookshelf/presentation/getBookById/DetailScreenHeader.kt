@@ -1,5 +1,8 @@
 package com.example.bookshelf.presentation.getBookById
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +13,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -19,8 +23,12 @@ import com.example.bookshelf.R
 @Composable
 fun DetailScreenHeader(
     modifier: Modifier = Modifier,
-    onBackArrowClicked: () -> Unit
+    onBackArrowClicked: () -> Unit,
+    bookTitle: String? = "Sorry, we don't know the book title",
+    bookAuthors: String? = "Sorry, we don't know the book authors"
 ) {
+    val context = LocalContext.current
+
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -42,7 +50,19 @@ fun DetailScreenHeader(
         }
 
         IconButton(
-            onClick = {}
+            onClick = {
+                val intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, "$bookTitle\nby $bookAuthors")
+                }
+
+                try {
+                    context.startActivity(intent)
+                } catch (e: ActivityNotFoundException) {
+                    e.printStackTrace()
+                }
+            }
         ) {
             Icon(
                 painter = painterResource(R.drawable.sharing),

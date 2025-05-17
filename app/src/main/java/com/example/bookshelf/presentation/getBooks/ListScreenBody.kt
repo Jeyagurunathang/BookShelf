@@ -16,7 +16,7 @@ import com.example.bookshelf.presentation.components.listScreen.BookCardComponen
 fun ListScreenBody(
     modifier: Modifier = Modifier,
     books: List<Item>,
-    onBookClicked: () -> Unit
+    onBookClicked: (String) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),

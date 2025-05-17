@@ -18,7 +18,7 @@ fun GetBooksListScreen(
     getBooksViewModel: GetBooksViewModel,
     getBooksUiState: BooksUiState,
     modifier: Modifier = Modifier,
-    onBookClicked: () -> Unit
+    onBookClicked: (String) -> Unit
 ) {
     Column(
         modifier = modifier

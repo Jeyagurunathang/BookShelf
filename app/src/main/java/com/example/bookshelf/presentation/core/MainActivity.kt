@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -19,6 +20,7 @@ import com.example.bookshelf.presentation.core.ui.theme.BookShelfTheme
 import com.example.bookshelf.presentation.getBookById.DetailScreen
 import com.example.bookshelf.presentation.getBookById.DetailScreenHeader
 import com.example.bookshelf.presentation.getBooks.GetBooksListScreen
+import com.example.bookshelf.presentation.viewModel.GetBookByIdViewModel
 import com.example.bookshelf.presentation.viewModel.GetBooksViewModel
 
 class MainActivity : ComponentActivity() {
@@ -29,12 +31,18 @@ class MainActivity : ComponentActivity() {
             val getBooksViewModel: GetBooksViewModel = viewModel(factory = GetBooksViewModel.Factory)
             val getBooksUiState = getBooksViewModel.uiState.collectAsState()
 
+            val getBookByIdViewModel: GetBookByIdViewModel = viewModel(factory = GetBookByIdViewModel.Factory)
+            val getBookByIdUiState = getBookByIdViewModel.uiState.collectAsState()
+
             BookShelfTheme (dynamicColor = false) {
                 Surface {
                     BookShelfAppUi(
                         getBooksViewModel = getBooksViewModel,
-                        getBooksUiState = getBooksUiState.value
+                        getBooksUiState = getBooksUiState.value,
+                        getBookByIdViewModel = getBookByIdViewModel
                     )
+
+//                    Text(text = getBooksUiState.value.success.toString())
                 }
             }
         }

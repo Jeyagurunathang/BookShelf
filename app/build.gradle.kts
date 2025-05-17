@@ -81,4 +81,7 @@ dependencies {
 
     // Coil Library
     implementation(libs.coil.compose)
+
+    // Remove HTML elements from a string
+    implementation(libs.jsoup)
 }

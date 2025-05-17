@@ -12,7 +12,11 @@ import androidx.compose.ui.unit.dp
 import com.example.bookshelf.R
 
 @Composable
-fun BookPageDateInfo(modifier: Modifier = Modifier) {
+fun BookPageDateInfo(
+    modifier: Modifier = Modifier,
+    publishedDate: String? = null,
+    pageCount: String? = null
+) {
     Row (
         modifier = Modifier
             .background(
@@ -26,13 +30,13 @@ fun BookPageDateInfo(modifier: Modifier = Modifier) {
     ) {
         BookMetaData(
             icon = R.drawable.calendar,
-            data = "2018",
+            data = publishedDate ?: "2014",
             modifier = Modifier.size(30.dp)
         )
 
         BookMetaData(
             icon = R.drawable.book,
-            data = "232",
+            data = if(pageCount?.isNotEmpty() == true) pageCount else "-",
             modifier = Modifier.size(30.dp)
         )
     }
