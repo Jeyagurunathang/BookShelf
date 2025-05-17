@@ -17,7 +17,8 @@ import com.example.bookshelf.presentation.viewModel.GetBooksViewModel
 fun GetBooksListScreen(
     getBooksViewModel: GetBooksViewModel,
     getBooksUiState: BooksUiState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBookClicked: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -38,7 +39,10 @@ fun GetBooksListScreen(
         } else if (getBooksUiState.error?.isNotEmpty() == true) {
             Text(text = getBooksUiState.error)
         } else {
-            ListScreenBody(books = getBooksUiState.success.items)
+            ListScreenBody(
+                books = getBooksUiState.success.items,
+                onBookClicked = onBookClicked
+            )
         }
     }
 }

@@ -36,6 +36,7 @@ import com.example.bookshelf.domain.models.booksListModel.VolumeInfo
 @Composable
 fun BookCardComponent(
     modifier: Modifier = Modifier,
+    onBookClicked: () -> Unit,
     book: Item = Item(
         id = "1",
         volumeInfo = VolumeInfo(
@@ -58,7 +59,7 @@ fun BookCardComponent(
         modifier = modifier
             .wrapContentSize()
             .combinedClickable(
-                onClick = {},
+                onClick = onBookClicked,
                 onLongClick = {
                     haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                     bottomModalEnabled = !bottomModalEnabled

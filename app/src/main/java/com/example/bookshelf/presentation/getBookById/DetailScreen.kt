@@ -13,14 +13,19 @@ import androidx.compose.ui.res.dimensionResource
 import com.example.bookshelf.R
 
 @Composable
-fun DetailScreen(modifier: Modifier = Modifier) {
+fun DetailScreen(
+    modifier: Modifier = Modifier,
+    onBackArrowClicked: () -> Unit
+) {
     Column (
         modifier = modifier
             .fillMaxSize()
             .padding(horizontal = dimensionResource(R.dimen.padding_tiny))
 //            .background(Color.Red)
     ) {
-        DetailScreenHeader()
+        DetailScreenHeader(
+            onBackArrowClicked = onBackArrowClicked
+        )
 
         DetailScreenBody()
     }
