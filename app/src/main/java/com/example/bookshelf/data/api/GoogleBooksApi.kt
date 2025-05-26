@@ -3,6 +3,7 @@ package com.example.bookshelf.data.api
 import com.example.bookshelf.data.remote.bookByIdDto.BookByIdDto
 import com.example.bookshelf.data.remote.booksListDto.BooksListDto
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface GoogleBooksApi {
@@ -14,6 +15,6 @@ interface GoogleBooksApi {
 
     @GET("books/v1/volumes/{bookId}")
     suspend fun getBookById(
-        @Query("bookId") bookId: String
+        @Path("bookId") bookId: String
     ): BookByIdDto
 }

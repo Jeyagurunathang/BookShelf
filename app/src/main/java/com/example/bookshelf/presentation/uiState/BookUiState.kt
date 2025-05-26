@@ -6,6 +6,6 @@ import com.example.bookshelf.domain.models.bookByIdModel.VolumeInfo
 
 data class BookUiState(
     val isLoading: Boolean = false,
-    val success: BookByIdModel? = null,
+    val success: BookByIdModel = BookByIdModel(),
     val error: String = ""
 )

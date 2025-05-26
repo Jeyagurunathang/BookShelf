@@ -1,12 +1,15 @@
-package com.example.bookshelf.presentation.components
+package com.example.bookshelf.presentation.components.listScreen
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -19,7 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -30,10 +33,13 @@ import com.example.bookshelf.presentation.core.ui.theme.BookShelfTheme
 @Composable
 fun SearchBarComponent(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
+    onClick: (String) -> Unit = {},
     onCancelClicked: () -> Unit = {}
 ) {
     var enteredBookCategory by remember { mutableStateOf("") }
+
+    val focusManager = LocalFocusManager.current
+
     Row (
         modifier = Modifier
             .fillMaxWidth(),
@@ -49,12 +55,25 @@ fun SearchBarComponent(
                 )
             },
             onValueChange = { enteredBookCategory = it },
+            leadingIcon = {
+                IconButton(
+                    onClick = onCancelClicked
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.KeyboardArrowLeft,
+                        contentDescription = "Back"
+                    )
+                }
+            },
             trailingIcon = {
                 if (enteredBookCategory.isNotEmpty()) {
                     IconDisplay(
                         icon = R.drawable.search,
                         modifier = Modifier.size(16.dp),
-                        onClick = onClick
+                        onClick = {
+                            onClick(enteredBookCategory)
+                            focusManager.clearFocus()
+                        }
                     )
                 } else {
                     IconDisplay(
@@ -80,7 +99,10 @@ fun SearchBarComponent(
                 imeAction = ImeAction.Go
             ),
             keyboardActions = KeyboardActions(
-                onGo = {  }
+                onGo = {
+                    onClick(enteredBookCategory)
+                    focusManager.clearFocus()
+                }
             )
         )
     }

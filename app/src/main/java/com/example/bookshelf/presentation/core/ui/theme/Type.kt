@@ -5,6 +5,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.bookshelf.R
 
@@ -30,8 +31,9 @@ val Typography = Typography(
     ),
     bodyMedium = TextStyle(
         fontFamily = lato,
-        fontSize = 32.sp,
-        fontWeight = FontWeight.Normal
+        fontSize = 26.sp,
+        fontWeight = FontWeight.Bold,
+        letterSpacing = 2.sp
     ),
     bodySmall = TextStyle(
         fontFamily = gabarito,
@@ -42,6 +44,25 @@ val Typography = Typography(
         fontFamily = lato,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal
+    ),
+    labelMedium = TextStyle(
+        fontFamily = lato,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Normal,
+        textAlign = TextAlign.Justify,
+        lineHeight = 32.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = lato,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Bold
+    ),
+    displaySmall = TextStyle(
+        fontFamily = lato,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Normal,
+        lineHeight = 40.sp,
+        letterSpacing = 2.sp
     )
     /* Other default text styles to override
     titleLarge = TextStyle(
